@@ -603,6 +603,5 @@ const foundGifs = () => Promise.resolve({
 })
 
 export {
-    apiHost,
-    searchedGifs
+    foundGifs
 }
