@@ -1,41 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 import './SearchForm.css'
-
-import { searchGifs } from './apiMock'
+import Search from "./api";
 
 const SearchForm = () => {
-    const [error, setError] = useState(null)
-    const [query, setQuery] = useState('')
-    const [images, setImages] = useState([])
+    const [error, setError] = useState(null);
+    const [query, setQuery] = useState('');
 
-    const handleQueryChange = event => setQuery(event.target.value)
+    const handleQueryChange = event => setQuery(event.target.value);
 
-    const performQuery = async event => {
-        event.preventDefault()
+    const search = async event => {
+        event.preventDefault();
 
-        setError(null)
+        setError(null);
 
         try {
-            const result = await searchGifs({
-                rating: 'pg-13',
-                q: query
-            })
-
-            setImages(result.data)
+            await Search({query});
         } catch (error) {
-            setError('Sorry, but something went wrong.')
+            console.log(error);
+            setError('Search Error')
         }
-    }
+    };
 
     return (
-        <form className="SearchForm" onSubmit={performQuery}>
-            <p>Enter a search term:</p>
+        <form className="SearchForm" onSubmit={search}>
+            <p>Search for a GIF to add to your MoodWall:</p>
 
             <input name="query" type="text" value={query} onChange={handleQueryChange} />
 
             <div className="ButtonBar">
-                <button type="submit" disabled={!query}>Search Giphy!</button>
+                <Button variant={"primary"} type="submit" disabled={!query}>Search!</Button>
             </div>
 
             {error && (
@@ -43,10 +39,8 @@ const SearchForm = () => {
                     {error}
                 </div>
             )}
-
-            <SearchResults results={images} />
         </form>
     )
-}
+};
 
 export default SearchForm
