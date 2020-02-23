@@ -1,20 +1,29 @@
-// eslint-disable-next-line no-unused-vars
-import React, {useState, useEffect} from 'react';
+import React from "react";
+import { useState } from "react";
 
-const API_KEY = "api_key=My59wRuSm1SmfR3F0mDQHXr73zcebfMx";
-let url = "https://api.giphy.com/v1/gifs/";
-let limit = "&limit=3";
+const Search = query => {
+  const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
+  const [data, setData] = useState([]);
+  const limit = 5;
 
-export default function Search({ query }) {
-    const [results, setResults] = useState([]);
+  let giphyAPI = `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${API_KEY}&limit=${limit}`;
+  fetch(giphyAPI)
+    .then(response => response.json())
+    .then(content => {
+      console.log("FETCH THEN > content:");
+      console.log(content);
+      setData(content.data);
+    });
 
-    useEffect(() =>{
-    let searchUrl = url + "search?" + API_KEY + "&" + query + limit;
-    fetch(searchUrl)
-        .then(r => r.json())
-        .then(r => setResults)
-    }, [query]);
+  return (
+    <div>
+      <p>{query}</p>
+      {data.map(d => (
+        <img src={d.images.downsized.url} alt={d.title} />
+      ))}
+      <p>{data[0]?.title}</p>
+    </div>
+  );
+};
 
-    console.log(results);
-}
-
+export default Search;
