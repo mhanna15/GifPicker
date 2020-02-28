@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 
 import "./SearchForm.css";
 
 const SearchForm = () => {
   const [query, setQuery] = useState("hello");
   const [results, setResults] = useState([]);
+  const [limit, setLimit] = useState(3)
 
-  const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
-  const limit = 5;
+  const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component  
 
   const fetchAPI = event => {
     event.preventDefault();
@@ -40,6 +40,22 @@ const SearchForm = () => {
           Search!
         </Button>
       </div>
+
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Choose # of gifs
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setLimit(3)} >3</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(4)} >4</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(5)} >5</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(3)} >6</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(4)} >7</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(5)} >8</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+
       {results.map(d => (
         <img src={d.images.downsized.url} alt={d.title} />
       ))}
