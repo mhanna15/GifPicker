@@ -50,9 +50,9 @@ const SearchForm = () => {
           <Dropdown.Item onClick={() => setLimit(3)} >3</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(4)} >4</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(5)} >5</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(3)} >6</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(4)} >7</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(5)} >8</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(6)} >6</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(7)} >7</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(8)} >8</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
