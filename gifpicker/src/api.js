@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import GifCard from "./gifCard";
 
 const Search = query => {
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
@@ -19,7 +20,7 @@ const Search = query => {
     <div>
       <p>{query}</p>
       {data.map(d => (
-        <img src={d.images.downsized.url} alt={d.title} />
+        <GifCard image={d}/> 
       ))}
       <p>{data[0]?.title}</p>
     </div>
