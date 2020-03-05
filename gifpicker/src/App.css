@@ -18,7 +18,10 @@ Button {
   
 }
 a:visited {
-  color: white;
+  color:white;
+}
+a:hover {
+  background-color:#61dafb;
 }
 .App-header {
   background-color: #282c34;
@@ -43,6 +46,5 @@ a:visited {
     transform: rotate(360deg);
   }
 
-  
   
 }
