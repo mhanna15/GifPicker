@@ -7,7 +7,10 @@ import "./SearchForm.css";
 const SearchForm = () => {
   const [query, setQuery] = useState("hello");
   const [results, setResults] = useState([]);
-  const [limit, setLimit] = useState(3)
+  const [limit, setLimit] = useState(3);
+  const [wall, setWall] = useState([]);
+  const gifArray = [];
+
 
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component  
 
@@ -23,6 +26,11 @@ const SearchForm = () => {
         setResults(content.data);
       })
   };
+
+  const updateWall = () => {
+      setWall(gifArray => [...gifArray, query])
+      console.log("HI")
+  }
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
@@ -57,8 +65,9 @@ const SearchForm = () => {
       </Dropdown>
 
       {results.map(d => (
-        <img src={d.images.downsized.url} alt={d.title} />
+        <img src={d.images.downsized.url} alt={d.title} onClick={() => updateWall()} />
       ))}
+
     </form>
   );
 };
