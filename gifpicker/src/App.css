@@ -12,7 +12,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+Button {
+  font-family: Raleway;
+  margin-top: 10px;
+  
+}
+a:visited {
+  color: white;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +42,7 @@
   to {
     transform: rotate(360deg);
   }
+
+  
+  
 }

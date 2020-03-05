@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: Raleway;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-size: calc(10px + 2vmin);
+}
+
+
