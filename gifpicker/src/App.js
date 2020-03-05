@@ -10,7 +10,9 @@ function App() {
   const [moodLinks, setMoodLinks] = useState([]);
 
   const updateMoodLinks = url => {
-    setMoodLinks(moodLinks.concat(url));
+    if (!moodLinks.includes(url)) {
+      setMoodLinks(moodLinks.concat(url));
+    }
   };
 
   return (
