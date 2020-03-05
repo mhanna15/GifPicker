@@ -3,34 +3,34 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Dropdown } from "react-bootstrap";
 
 import "./SearchForm.css";
+import GifCard from "./GifCard";
+import MoodWall from "./MoodWall";
 
-const SearchForm = () => {
+const SearchForm = props => {
   const [query, setQuery] = useState("hello");
   const [results, setResults] = useState([]);
   const [limit, setLimit] = useState(3);
-  const [wall, setWall] = useState([]);
+  //const [wall, setWall] = useState([]);
   const gifArray = [];
-
+  const setMoodwalls = props.setMoodwalls;
 
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component  
 
   const fetchAPI = event => {
     event.preventDefault();
-    console.log("is this orking");
     let giphyAPI = `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${API_KEY}&limit=${limit}`;
     fetch(giphyAPI)
       .then(response => response.json())
       .then(content => {
-        console.log("FETCH THEN > content:");
-        console.log(content);
         setResults(content.data);
       })
   };
 
-  const updateWall = () => {
-      setWall(gifArray => [...gifArray, query])
-      console.log("HI")
-  }
+  // const updateWall = gifs => {
+  //     setWall(gifArray => [...gifArray, gifs.images.downsized.url])
+  //     console.log("While within updateWall:" +  wall)
+  //     return (<MoodWall image = {wall} />)
+  // }
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
@@ -55,7 +55,6 @@ const SearchForm = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setLimit(3)} >3</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(4)} >4</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(5)} >5</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(6)} >6</Dropdown.Item>
@@ -65,7 +64,10 @@ const SearchForm = () => {
       </Dropdown>
 
       {results.map(d => (
-        <img src={d.images.downsized.url} alt={d.title} onClick={() => updateWall()} />
+        <GifCard url = {d.images.downsized.url} title = {d.title} setMoodwalls = {setMoodwalls}/>
+
+        //<img src={d.images.downsized.url} alt={d.title} onClick={() => props.setMoodwalls(d.images.downsized.url),
+        //console.log("Right here")
       ))}
 
     </form>

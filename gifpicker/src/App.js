@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import SearchForm from "./searchForm";
 import MoodWall from "./MoodWall"
@@ -14,12 +14,14 @@ import { NavLink } from "react-router-dom";
 
 
 const App = () => {
+    const [moodwalls, setMoodwalls] = useState([]);
+
     return ( 
     <Router>
         <div className = "App" >
             <Button component = { Link } to = "/MoodWall" >
             <nav >
-                <NavLink activeClassName = "ActiveHomePage" exact id = "Home Page" to = "/" > Home 
+                <NavLink activeClassName = "ActiveHomePage" exact id = "Home Page" to = "/"> Home 
                 </NavLink>
             </nav>
             </Button>  
@@ -27,7 +29,7 @@ const App = () => {
         <nav >
         <div name = "homeButton">
         <Button component = { Link }to = "/Home" >
-            <NavLink activeClassName = "ActiveMoodWallPage" exact id = "MoodWallPage" to = "/MoodWall" > MoodWall 
+            <NavLink activeClassName = "ActiveMoodWallPage" exact id = "MoodWllPage" to = "/MoodWall" > MoodWall 
             </NavLink>
          </Button> 
          </div>
@@ -38,7 +40,8 @@ const App = () => {
         <Switch>
             <Route exact path = "/" > <Home/>          
             </Route> 
-            <Route exact path = "/MoodWall" component = { MoodWall } > <MoodWall/>
+            <Route exact path = "/MoodWall">
+                <MoodWall moodwalls={moodwalls} setMoodwalls={setMoodwalls}></MoodWall>
             </Route>
         </Switch>        
         </div>
@@ -51,7 +54,7 @@ const App = () => {
             <div className = "Home" >
                 <header className = "App-header" >
                 <h1> Welcome to MoodWall </h1> 
-                <SearchForm/>
+                <SearchForm setMoodwalls={setMoodwalls}/>
                 </header> 
             </div>
 
