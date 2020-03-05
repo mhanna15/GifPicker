@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import SearchForm from "./searchForm";
-import Search from "./api";
-
+// import Search from "./api";
+import MoodWall from "./MoodWall";
 
 function App() {
-  return (   
-    <div className="App"> 
-      <header className="App-header">
-        <h1>Welcome to MoodWall</h1>
-        <SearchForm />
-      </header>
-      
+  const [showHome, setShowHome] = useState(true);
+  const [showMoodWall, setShowMoodWall] = useState(false);
+  const [moodLinks, setMoodLinks] = useState([]);
+
+  const updateMoodLinks = url => {
+    setMoodLinks(moodLinks.concat(url));
+  };
+
+  return (
+    <div className="App">
+      <button
+        onClick={() => {
+          setShowHome(true);
+          setShowMoodWall(false);
+        }}
+      >
+        HOME
+      </button>
+      <button
+        onClick={() => {
+          setShowMoodWall(true);
+          setShowHome(false);
+        }}
+      >
+        MOODWALL
+      </button>
+
+      {showHome && (
+        <header className="App-header">
+          <h1>Welcome to MoodWall</h1>
+          <SearchForm updateMoodLinks={updateMoodLinks} />
+        </header>
+      )}
+      {showMoodWall && <MoodWall moodLinks={moodLinks} />}
     </div>
-    
   );
 }
 
