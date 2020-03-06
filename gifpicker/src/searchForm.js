@@ -5,7 +5,7 @@ import { Button, Dropdown } from "react-bootstrap";
 import "./SearchForm.css";
 
 const SearchForm = props => {
-  const [query, setQuery] = useState("hello");
+  const [query, setQuery] = useState("Enter a search...");
   const [results, setResults] = useState([]);
   const [limit, setLimit] = useState(3);
   const { updateMoodLinks } = props;
@@ -33,7 +33,7 @@ const SearchForm = props => {
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
-      <p>Search for a GIF to add to your MoodWall:</p>
+      <p>Search for a GIF, and click it to add it to your MoodWall:</p>
 
       <input
         name="query"
@@ -56,7 +56,7 @@ const SearchForm = props => {
 
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Choose # of gifs
+          Choose # of gif search results to display
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
