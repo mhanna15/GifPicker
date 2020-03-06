@@ -9,6 +9,11 @@ const SearchForm = props => {
   const [results, setResults] = useState([]);
   const [limit, setLimit] = useState(3);
 
+  const [wall, setWall] = useState([]);
+  const gifArray = [];
+
+
+
   const { updateMoodLinks } = props;
 
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
@@ -32,6 +37,11 @@ const SearchForm = props => {
         setResults(content.data);
       })
     };
+
+  const updateWall = () => {
+      setWall(gifArray => [...gifArray, query])
+      console.log("HI")
+  }
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
@@ -62,11 +72,12 @@ const SearchForm = props => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setLimit(4)}>4</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(5)}>5</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(3)}>6</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(4)}>7</Dropdown.Item>
-          <Dropdown.Item onClick={() => setLimit(5)}>8</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(3)} >3</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(4)} >4</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(5)} >5</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(6)} >6</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(7)} >7</Dropdown.Item>
+          <Dropdown.Item onClick={() => setLimit(8)} >8</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
@@ -76,7 +87,11 @@ const SearchForm = props => {
           alt={d.title}
           onClick={() => updateMoodLinks(d.images.downsized.url)}
         />
+
+        <img src={d.images.downsized.url} alt={d.title} onClick={() => updateWall()} />
+
       ))}
+
     </form>
   );
 };
