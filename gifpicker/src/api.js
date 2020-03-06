@@ -11,8 +11,6 @@ const Search = query => {
   fetch(giphyAPI)
     .then(response => response.json())
     .then(content => {
-      console.log("FETCH THEN > content:");
-      console.log(content);
       setData(content.data);
     });
 

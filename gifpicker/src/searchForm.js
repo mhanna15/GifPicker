@@ -8,14 +8,7 @@ const SearchForm = props => {
   const [query, setQuery] = useState("hello");
   const [results, setResults] = useState([]);
   const [limit, setLimit] = useState(3);
-
-  const [wall, setWall] = useState([]);
-  const gifArray = [];
-
-
-
   const { updateMoodLinks } = props;
-
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
 
   const fetchAPI = event => {
@@ -37,11 +30,6 @@ const SearchForm = props => {
         setResults(content.data);
       })
     };
-
-  const updateWall = () => {
-      setWall(gifArray => [...gifArray, query])
-      console.log("HI")
-  }
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
