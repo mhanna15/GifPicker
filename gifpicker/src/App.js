@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import SearchForm from "./searchForm";
-import MoodWall from "./moodWall";
+import MoodWall from "./MoodWall";
 
 function App() {
   const [showHome, setShowHome] = useState(true);
@@ -43,6 +43,6 @@ function App() {
     </div>
   );
 }
-};
+;
 
 export default App;

@@ -88,7 +88,7 @@ const SearchForm = props => {
           onClick={() => updateMoodLinks(d.images.downsized.url)}
         />
 
-        <img src={d.images.downsized.url} alt={d.title} onClick={() => updateWall()} />
+
 
       ))}
 
