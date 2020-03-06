@@ -15,16 +15,23 @@ const SearchForm = props => {
 
   const fetchAPI = event => {
     event.preventDefault();
-    console.log("is this orking");
     let giphyAPI = `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${API_KEY}&limit=${limit}`;
     fetch(giphyAPI)
       .then(response => response.json())
       .then(content => {
-        console.log("FETCH THEN > content:");
-        console.log(content);
         setResults(content.data);
-      });
+      });      
   };
+
+  const fetchTrendingAPI = event => {
+    event.preventDefault();
+    let trendingAPI = `https://api.giphy.com/v1/gifs/trending?q=${query}&api_key=${API_KEY}&limit=${limit}`;
+    fetch(trendingAPI)
+      .then(response => response.json())
+      .then(content => {
+        setResults(content.data);
+      })
+    };
 
   return (
     <form className="SearchForm" onSubmit={fetchAPI}>
@@ -43,13 +50,18 @@ const SearchForm = props => {
         </Button>
       </div>
 
+      <div className="TrendingButton">
+        <Button variant={"primary"} type="submit" disabled={!query} onClick ={fetchTrendingAPI}>
+          Trending!
+        </Button>
+      </div>
+
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Choose # of gifs
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setLimit(3)}>3</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(4)}>4</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(5)}>5</Dropdown.Item>
           <Dropdown.Item onClick={() => setLimit(3)}>6</Dropdown.Item>

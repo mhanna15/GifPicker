@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import SearchForm from "./searchForm";
-// import Search from "./api";
-import MoodWall from "./MoodWall";
+import MoodWall from "./moodWall";
 
 function App() {
   const [showHome, setShowHome] = useState(true);
