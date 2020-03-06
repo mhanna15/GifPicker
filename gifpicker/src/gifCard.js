@@ -8,8 +8,7 @@ const GifCard = props => {
 
 return (
     <div>
-      <img src={props.url} alt={props.title}  onClick={() => setMoodwalls(props.url)}>
-        {/* {console.log("This is the array: " + gifArray + "this is the GIFURL" + props.url)} */}
+      <img src={props.url} alt={props.title}  onClick={() => setCollage(gifArray.concat(props.url))}>
       </img>
     </div>
   );

@@ -29,7 +29,7 @@ const App = () => {
         <nav >
         <div name = "homeButton">
         <Button component = { Link }to = "/Home" >
-            <NavLink activeClassName = "ActiveMoodWallPage" exact id = "MoodWllPage" to = "/MoodWall" > MoodWall 
+            <NavLink activeClassName = "ActiveMoodWallPage" exact id = "MoodWallPage" to = "/MoodWall" > MoodWall 
             </NavLink>
          </Button> 
          </div>
