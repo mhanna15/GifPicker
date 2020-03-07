@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GifCard from "../Components/gifCard";
 
 const Search = query => {
-  const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+  const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
   const [data, setData] = useState([]);
   const limit = 5;
 

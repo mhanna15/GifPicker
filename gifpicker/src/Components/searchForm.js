@@ -9,7 +9,7 @@ const SearchForm = props => {
   const [results, setResults] = useState([]);
   const [limit, setLimit] = useState(3);
   const { updateMoodLinks } = props;
-  const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
+  const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
 
   const fetchAPI = event => {
     event.preventDefault();
