@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./MoodWall.css";
+import "../Styling/MoodWall.css";
 
 function MoodWall(props) {
   const { moodLinks } = props;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Dropdown } from "react-bootstrap";
 
-import "./SearchForm.css";
+import "../Styling/SearchForm.css";
 
 const SearchForm = props => {
   const [query, setQuery] = useState("Enter a search...");

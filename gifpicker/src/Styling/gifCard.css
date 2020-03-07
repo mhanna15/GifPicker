@@ -1,0 +1,13 @@
+Button{
+    font-family: Raleway;
+    margin-top: 14px;
+}
+
+input{
+    background-color: #373737;
+    font-family: Raleway;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px
+}

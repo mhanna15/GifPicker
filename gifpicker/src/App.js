@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./App.css";
-import SearchForm from "./searchForm";
-import MoodWall from "./moodWall";
+import "./Styling/App.css";
+import SearchForm from "./Components/searchForm";
+import MoodWall from "./Components/moodWall";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Container, Row, Col } from "react-bootstrap"
 

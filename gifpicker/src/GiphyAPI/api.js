@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import GifCard from "./gifCard";
+import GifCard from "../Components/gifCard";
 
 const Search = query => {
   const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
