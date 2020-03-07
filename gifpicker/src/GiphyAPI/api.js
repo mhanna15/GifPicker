@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import GifCard from "../Components/gifCard";
 
 const Search = query => {
-  const API_KEY = "y5nemJHuTtxBZ01t4en7VHWEoYFEM7E5"; // put this at the top level of the component
+  const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
   const [data, setData] = useState([]);
   const limit = 5;
 
